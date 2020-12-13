@@ -1,0 +1,4 @@
+﻿  while-4.cpp
+C:\AllProject\The C++ Programming Language\Task-3\while-4\while-4.cpp(8,7): error C2872: “data”: 不明确的符号
+C:\AllProject\The C++ Programming Language\Task-3\while-4\while-4.h(5,7): message : 可能是“data”
+C:\AllProject\The C++ Programming Language\Task-3\while-4\while-4.cpp(8,7): message : 或  “data”
