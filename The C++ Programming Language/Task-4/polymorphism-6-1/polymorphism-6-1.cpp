@@ -1,4 +1,6 @@
-﻿
+﻿//经典例题虚函数的应用show函数的调用达到动态连编效果
+
+
 #include<iostream>
 using namespace std;
 #include<string.h>
@@ -49,7 +51,16 @@ void Academician::show()
 	Student::show();
 	cout << "大学名字：" << university_name << endl;
 }
+
+
 void Primary_scholar::show()
+{
+	Student::show();
+	cout << "课程成绩1：" << course1 << endl;
+	cout << "课程成绩2：" << course2 << endl;
+}
+
+void main()
 {
 	Student* p, A("张美丽", "和高小写", 1980);
 	Academician B("望京", "紫荆港", 1982, "浙江大学");
