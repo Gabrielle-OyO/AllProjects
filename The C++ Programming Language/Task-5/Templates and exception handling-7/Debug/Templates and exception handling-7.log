@@ -1,0 +1,10 @@
+﻿  Templates and exception handling-7.cpp
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(63,23): error C2039: "get": 不是 "queuelink<Type>" 的成员
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(64,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(81,23): error C2039: "clear": 不是 "queuelink<Type>" 的成员
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(82,1): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(103,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(126,15): error C2039: "get": 不是 "queuelink<char>" 的成员
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(109): message : 参见“queuelink<char>”的声明
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(129,7): error C2039: "clear": 不是 "queuelink<char>" 的成员
+C:\AllProject\The C++ Programming Language\Task-5\Templates and exception handling-7\Templates and exception handling-7.cpp(109): message : 参见“queuelink<char>”的声明
