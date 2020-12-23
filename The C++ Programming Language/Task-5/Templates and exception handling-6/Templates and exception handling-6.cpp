@@ -46,6 +46,6 @@ int main()
 	while (p)
 	{
 		cout<< p->getdata();
-		p = p->getdnext();
+		p = p->getnext();
 	} 
 }

@@ -1,5 +1,5 @@
 ﻿
-//建立演示链式队列类模板
+//建立并演示链式队列类模板
 
 #include<iostream>
 using namespace std;
@@ -21,6 +21,8 @@ public:
 	queuelink();
 	~queuelink();
 	void put(Type value);
+	Type get();
+	void clear();
 	void showqueue();
 private:
 	node<Type>* head;
@@ -73,7 +75,7 @@ Type queuelink<Type>::get()
 	T = rear;
 	rear = rear->next;
 	delete T;
-	cout << "\n Get" << value << "from queue.\n";
+	cout << "\n Get " << value << "from queue.\n";
 	return (value);
 }
 
@@ -99,13 +101,13 @@ void queuelink<Type>::showqueue()
 	cout << "\n\n";
 }
 
-main()
+int main()
 {
-	cout << "<p>------Put data to queue\n";
-	cout << "<p>------Get data to queue\n";
-	cout << "<p>------Clear queue\n";
-	cout << "<p>------Show the content of queue\n";
-	cout << "<p>------Quit...\n";
+	cout << "<p>---P---Put data to queue\n";
+	cout << "<p>---G---Get data to queue\n";
+	cout << "<p>---L---Clear queue\n";
+	cout << "<p>---S---Show the content of queue\n";
+	cout << "<p>---Q---Quit...\n";
 	queuelink<char>ss;
 	char value;
 	char ch;
@@ -117,7 +119,7 @@ main()
 		switch (ch)
 		{
 		case 'P':
-			cout << "\n Enter the value that";
+			cout << "\n Enter the value that ";
 			cout << "you want to put:";
 			cin >> value;
 			ss.put(value);
@@ -133,7 +135,7 @@ main()
 		case 'Q':
 			return 0;
 		default:
-			cout << "\n You have inputted awrong item!Please try agiain!\n";
+			cout << "\n You have inputted awrong item! Please try again!\n";
 			continue;
 		}
 	}
