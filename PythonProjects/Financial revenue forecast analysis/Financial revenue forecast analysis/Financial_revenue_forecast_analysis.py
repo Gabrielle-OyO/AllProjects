@@ -4,6 +4,28 @@
 #######################           任务实现             #######################
 ###############################################################################
 
+
+#-*- coding: utf-8 -*-
+
+def GM11(x0): #自定义灰色预测函数
+  import numpy as np
+  x1 = x0.cumsum() #1-AGO序列
+  z1 = (x1[:len(x1)-1] + x1[1:])/2.0 #紧邻均值（MEAN）生成序列
+  z1 = z1.reshape((len(z1),1))
+  B = np.append(-z1, np.ones_like(z1), axis = 1)
+  Yn = x0[1:].reshape((len(x0)-1, 1))
+  [[a],[b]] = np.dot(np.dot(np.linalg.inv(np.dot(B.T, B)), B.T), Yn) #计算参数
+  f = lambda k: (x0[0]-b/a)*np.exp(-a*(k-1))-(x0[0]-b/a)*np.exp(-a*(k-2)) #还原值
+  delta = np.abs(x0 - np.array([f(i) for i in range(1,len(x0)+1)]))
+  C = delta.std()/x0.std()
+  P = 1.0*(np.abs(delta - delta.mean()) < 0.6745*x0.std()).sum()/len(x0)
+  return f, a, b, x0[0], C, P #返回灰色预测函数、a、b、首项、方差比、小残差概率
+
+
+
+
+
+
 # 代码 8-1     求解Pearson相关系数（求取企业所得随各特征间的相关系数
 import numpy as np
 import pandas as pd
@@ -27,12 +49,12 @@ print('相关系数为：',np.round(lasso.coef_,5))  #输出结果，保留五�
 ## 计算相关系数非零的个数
 print('相关系数非零个数为：',np.sum(lasso.coef_ != 0))
 
-
 mask = lasso.coef_ != 0  #返回一个相关系数是否为零的布尔数组
 print('相关系数是否为零：',mask)
 
 outputfile = '‪C:/Users/18377/Desktop/百宝箱/Python数据分析与应用/第8章/任务程序/tmp/new_reg_data.csv'  #输出的数据文件
-new_reg_data = data.iloc[:, mask]  #返回相关系数非零的数据
+new_reg_data = data.iloc[:, mask,True]  #返回相关系数非零的数据
+mask = np.append(mask,True)
 new_reg_data.to_csv(outputfile)  #存储数据
 print('输出数据的维度为：',new_reg_data.shape)  #查看输出数据的维度
 
@@ -95,18 +117,3 @@ print('预测图为：',data[['y','y_pred']].plot(subplots = True,
       style=['b-o','r-*']))
 
 
-#-*- coding: utf-8 -*-
-
-def GM11(x0): #自定义灰色预测函数
-  import numpy as np
-  x1 = x0.cumsum() #1-AGO序列
-  z1 = (x1[:len(x1)-1] + x1[1:])/2.0 #紧邻均值（MEAN）生成序列
-  z1 = z1.reshape((len(z1),1))
-  B = np.append(-z1, np.ones_like(z1), axis = 1)
-  Yn = x0[1:].reshape((len(x0)-1, 1))
-  [[a],[b]] = np.dot(np.dot(np.linalg.inv(np.dot(B.T, B)), B.T), Yn) #计算参数
-  f = lambda k: (x0[0]-b/a)*np.exp(-a*(k-1))-(x0[0]-b/a)*np.exp(-a*(k-2)) #还原值
-  delta = np.abs(x0 - np.array([f(i) for i in range(1,len(x0)+1)]))
-  C = delta.std()/x0.std()
-  P = 1.0*(np.abs(delta - delta.mean()) < 0.6745*x0.std()).sum()/len(x0)
-  return f, a, b, x0[0], C, P #返回灰色预测函数、a、b、首项、方差比、小残差概率
