@@ -52,7 +52,7 @@ private:
 class D :public A1, public A2
 {
 public:
-	D(int i, int j, int k, int l) :A1(i), A2(j), a3(k)
+	D(int i, int j, int k, int l) :A2(i), A1(j), a3(k)
 	{
 		d = l;
 		cout << "Constructor D." << d << endl;
